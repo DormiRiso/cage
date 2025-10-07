@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cage"
+dynamic = ["version"]
+description = "Condition And Grip Estimator"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+    { name = "Michelangelo Leoni", email = "leonimichelangelo17@gmail.com" }
+]
+dependencies = [
+]
+
+[tool.hatch.version]
+path = "src/cage/_version.py"
