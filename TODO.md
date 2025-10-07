@@ -1,0 +1,4 @@
+-fecth di tutte le stazioni meteo di il meteo da inserire in database
+-trovare tutte le coordinate delle posizioni ed aggiungere al database
+-sistema di ricerca di coordinate per falesia
+-calcolo distanza e algoritmo peso per stazioni meteo
