@@ -51,7 +51,6 @@ coverage.xml
 .pytest_cache/
 cover/
 tests/__pycache__/
-tests/test_db_manager.py
 
 # Translations
 *.mo
