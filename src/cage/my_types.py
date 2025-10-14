@@ -7,4 +7,4 @@ class Crag:
         self.lon = lon
     
     def __repr__(self):
-        return f"Crag(name={self.name}, lat={self.lat}, lon={self.lon})"
+        return f"{self.name}: (lat={self.lat}, lon={self.lon})"

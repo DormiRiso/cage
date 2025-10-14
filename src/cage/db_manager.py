@@ -1,6 +1,6 @@
 import sqlite3
 from contextlib import contextmanager
-from cage.types import Crag
+from cage.my_types import Crag
 
 def connect_to_database(db_name="database/cage.db"):
     """Connect to the SQLite database specified by db_name.
