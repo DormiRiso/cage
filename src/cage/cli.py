@@ -1,5 +1,5 @@
 import argparse
-from _version import __version__
+from cage._version import __version__
 
 # Main entry point for the CLI
 def main():
