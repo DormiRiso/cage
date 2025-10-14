@@ -56,3 +56,40 @@ def test_list_all_crags():
     assert "Crag2" in names
     teardown_module(None)
     setup_module(None)
+
+def test_insert_new_station():
+    """Test inserting new weather stations."""
+    db_manager.init_db(TEST_DB_PATH)
+    assert db_manager.insert_new_station("TestStation", 45.0, 7.0, "teststation", TEST_DB_PATH) == True
+    assert db_manager.insert_new_station("TestStation", 45.0, 7.0, "teststation", TEST_DB_PATH) == False
+    assert db_manager.insert_new_station("", 45.0, 7.0, "teststation", TEST_DB_PATH) == False
+    assert db_manager.insert_new_station("AnotherStation", None, 7.0, "anotherstation", TEST_DB_PATH) == False
+    assert db_manager.insert_new_station("AnotherStation", 45.0, None, "anotherstation", TEST_DB_PATH) == False
+    assert db_manager.insert_new_station("AnotherStation", 45.0, 7.0, "", TEST_DB_PATH) == False
+    teardown_module(None)
+    setup_module(None)
+
+def test_get_coordinates_from_station_name():
+    """Test retrieving coordinates by station name."""
+    db_manager.init_db(TEST_DB_PATH)
+    db_manager.insert_new_station("TestStation", 45.0, 7.0, "teststation", TEST_DB_PATH)
+    coords = db_manager.get_coordinates_from_station_name("TestStation", TEST_DB_PATH)
+    assert coords == (45.0, 7.0)
+    assert db_manager.get_coordinates_from_station_name("NonExistentStation", TEST_DB_PATH) is None
+    assert db_manager.get_coordinates_from_station_name("", TEST_DB_PATH) is None
+    teardown_module(None)
+    setup_module(None)
+
+def test_list_all_stations():
+    """Test listing all weather stations."""
+    db_manager.init_db(TEST_DB_PATH)
+    db_manager.insert_new_station("Station1", 45.0, 7.0, "station1", TEST_DB_PATH)
+    db_manager.insert_new_station("Station2", 46.0, 8.0, "station2", TEST_DB_PATH)
+    stations = db_manager.list_all_stations(TEST_DB_PATH)
+    print(stations)
+    assert len(stations) == 2
+    names = {station.name for station in stations}
+    assert "Station1" in names
+    assert "Station2" in names
+    teardown_module(None)
+    setup_module(None)
